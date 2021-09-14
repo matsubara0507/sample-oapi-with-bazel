@@ -13,3 +13,10 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+bazel-bin
+bazel-out
+bazel-sample-oapi-with-bazel
+bazel-testlogs
+
+elm-stuff

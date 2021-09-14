@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "echo",
+    srcs = [
+        "bind.go",
+        "binder.go",
+        "context.go",
+        "echo.go",
+        "group.go",
+        "ip.go",
+        "log.go",
+        "response.go",
+        "router.go",
+    ],
+    importmap = "github.com/matsubara0507/sample-oapi-with-bazel/third_party/oapi-codegen/vendor/github.com/labstack/echo/v4",
+    importpath = "github.com/labstack/echo/v4",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//third_party/oapi-codegen/vendor/github.com/labstack/gommon/color",
+        "//third_party/oapi-codegen/vendor/github.com/labstack/gommon/log",
+        "//third_party/oapi-codegen/vendor/golang.org/x/crypto/acme",
+        "//third_party/oapi-codegen/vendor/golang.org/x/crypto/acme/autocert",
+        "//third_party/oapi-codegen/vendor/golang.org/x/net/http2",
+        "//third_party/oapi-codegen/vendor/golang.org/x/net/http2/h2c",
+    ],
+)

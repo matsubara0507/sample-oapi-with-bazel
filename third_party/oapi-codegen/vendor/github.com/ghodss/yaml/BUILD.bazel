@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "yaml",
+    srcs = [
+        "fields.go",
+        "yaml.go",
+    ],
+    importmap = "github.com/matsubara0507/sample-oapi-with-bazel/third_party/oapi-codegen/vendor/github.com/ghodss/yaml",
+    importpath = "github.com/ghodss/yaml",
+    visibility = ["//visibility:public"],
+    deps = ["//third_party/oapi-codegen/vendor/gopkg.in/yaml.v2:yaml_v2"],
+)

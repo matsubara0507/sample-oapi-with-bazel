@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "templates",
+    srcs = [
+        "doc.go",
+        "templates.gen.go",
+    ],
+    importmap = "github.com/matsubara0507/sample-oapi-with-bazel/third_party/oapi-codegen/vendor/github.com/deepmap/oapi-codegen/pkg/codegen/templates",
+    importpath = "github.com/deepmap/oapi-codegen/pkg/codegen/templates",
+    visibility = ["//visibility:public"],
+)

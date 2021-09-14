@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("@rules_elm//elm:def.bzl", "elm_dependencies", "elm_make")
+load("//:build/openapi.bzl", "openapi_generate")
+
+openapi_generate(
+    name = "api",
+    out = "generated",
+    generator = "elm",
+    spec = "//sample-app/server:api.yaml",
+)
+
+elm_dependencies(
+    name = "deps",
+    elm_json = "elm.json",
+)
+
+elm_make(
+    name = "mainjs",
+    srcs = glob(["src/**/*.elm"]) + glob(["generated/src/**/*.elm"]),
+    elm_home = ":deps",
+    elm_json = "elm.json",
+    main = "src/Main.elm",
+    optimize = True,
+    output = "dist/main.js",
+)
+
+go_library(
+    name = "client",
+    srcs = ["embed.go"],
+    embedsrcs = [
+        ":mainjs",  # keep
+        "index.html",
+    ],
+    importpath = "github.com/matsubara0507/sample-oapi-with-bazel/sample-app/client",
+    visibility = ["//visibility:public"],
+)

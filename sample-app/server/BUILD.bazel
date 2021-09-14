@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+load("//:build/oapi-codegen.bzl", "oapi_codegen")
+
+exports_files(
+    ["api.yaml"],
+    visibility = ["//sample-app/client:__pkg__"],
+)
+
+oapi_codegen(
+    name = "api",
+    out = "api.gen.go",
+    generate = [
+        "types",
+        "server",
+    ],
+    package = "server",
+    spec = "api.yaml",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "server",
+    srcs = [
+        "api.gen.go",
+        "server.go",
+    ],
+    importpath = "github.com/matsubara0507/sample-oapi-with-bazel/sample-app/server",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//sample-app/client",
+        "//sample-app/vendor/github.com/deepmap/oapi-codegen/pkg/runtime",
+        "//sample-app/vendor/github.com/labstack/echo/v4:echo",
+        "//sample-app/vendor/github.com/labstack/echo/v4/middleware",
+        "//sample-app/vendor/github.com/pkg/errors",
+    ],
+)

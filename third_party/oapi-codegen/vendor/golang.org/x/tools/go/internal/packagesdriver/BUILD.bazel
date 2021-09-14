@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "packagesdriver",
+    srcs = ["sizes.go"],
+    importmap = "github.com/matsubara0507/sample-oapi-with-bazel/third_party/oapi-codegen/vendor/golang.org/x/tools/go/internal/packagesdriver",
+    importpath = "golang.org/x/tools/go/internal/packagesdriver",
+    visibility = ["//third_party/oapi-codegen/vendor/golang.org/x/tools/go:__subpackages__"],
+)

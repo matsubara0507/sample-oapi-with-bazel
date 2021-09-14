@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "types",
+    srcs = [
+        "date.go",
+        "email.go",
+        "regexes.go",
+    ],
+    importmap = "github.com/matsubara0507/sample-oapi-with-bazel/sample-app/vendor/github.com/deepmap/oapi-codegen/pkg/types",
+    importpath = "github.com/deepmap/oapi-codegen/pkg/types",
+    visibility = ["//visibility:public"],
+)

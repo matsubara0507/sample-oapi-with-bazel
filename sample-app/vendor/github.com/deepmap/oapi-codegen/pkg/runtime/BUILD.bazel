@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "runtime",
+    srcs = [
+        "bind.go",
+        "bindparam.go",
+        "bindstring.go",
+        "deepobject.go",
+        "styleparam.go",
+    ],
+    importmap = "github.com/matsubara0507/sample-oapi-with-bazel/sample-app/vendor/github.com/deepmap/oapi-codegen/pkg/runtime",
+    importpath = "github.com/deepmap/oapi-codegen/pkg/runtime",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//sample-app/vendor/github.com/deepmap/oapi-codegen/pkg/types",
+        "//sample-app/vendor/github.com/pkg/errors",
+    ],
+)

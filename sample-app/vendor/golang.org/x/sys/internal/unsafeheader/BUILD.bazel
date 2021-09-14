@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "unsafeheader",
+    srcs = ["unsafeheader.go"],
+    importmap = "github.com/matsubara0507/sample-oapi-with-bazel/sample-app/vendor/golang.org/x/sys/internal/unsafeheader",
+    importpath = "golang.org/x/sys/internal/unsafeheader",
+    visibility = ["//sample-app/vendor/golang.org/x/sys:__subpackages__"],
+)

@@ -1,0 +1,77 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: ToDo App
+  license:
+    name: MIT
+servers:
+  - url: /api
+paths:
+  /todos:
+    get:
+      responses:
+        '200':
+          description: return all ToDo list
+          content:
+            application/json:    
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ToDo"
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ToDo"
+      responses:
+        '200':
+          description: return created ToDo
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/ToDo"
+  /todos/{todoId}:
+    put:
+      parameters:
+        - name: todoId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ToDo"
+      responses:
+        '204':
+          description: "No Contents"
+    delete:
+      parameters:
+        - name: todoId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: "No Contents"
+
+components:
+  schemas:
+    ToDo:
+      type: object
+      required:
+        - id
+        - title
+        - done
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        done:
+          type: boolean

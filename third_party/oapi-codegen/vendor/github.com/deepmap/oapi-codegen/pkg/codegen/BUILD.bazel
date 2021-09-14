@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "codegen",
+    srcs = [
+        "codegen.go",
+        "extension.go",
+        "filter.go",
+        "inline.go",
+        "operations.go",
+        "prune.go",
+        "schema.go",
+        "template_helpers.go",
+        "utils.go",
+    ],
+    importmap = "github.com/matsubara0507/sample-oapi-with-bazel/third_party/oapi-codegen/vendor/github.com/deepmap/oapi-codegen/pkg/codegen",
+    importpath = "github.com/deepmap/oapi-codegen/pkg/codegen",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//third_party/oapi-codegen/vendor/github.com/deepmap/oapi-codegen/pkg/codegen/templates",
+        "//third_party/oapi-codegen/vendor/github.com/getkin/kin-openapi/openapi3",
+        "//third_party/oapi-codegen/vendor/github.com/labstack/echo/v4:echo",
+        "//third_party/oapi-codegen/vendor/github.com/pkg/errors",
+        "//third_party/oapi-codegen/vendor/golang.org/x/tools/imports",
+    ],
+)

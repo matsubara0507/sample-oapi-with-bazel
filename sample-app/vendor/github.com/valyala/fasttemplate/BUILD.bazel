@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "fasttemplate",
+    srcs = [
+        "template.go",
+        "unsafe.go",
+    ],
+    importmap = "github.com/matsubara0507/sample-oapi-with-bazel/sample-app/vendor/github.com/valyala/fasttemplate",
+    importpath = "github.com/valyala/fasttemplate",
+    visibility = ["//visibility:public"],
+    deps = ["//sample-app/vendor/github.com/valyala/bytebufferpool"],
+)
