@@ -54,7 +54,7 @@ def _oapi_codegen_gen_impl(ctx):
     out_file = ctx.actions.declare_file(ctx.label.name + ".bash")
     ctx.actions.write(
         output = out_file,
-        content = """
+        content = """\
 #!/usr/bin/env bash
 cd "$BUILD_WORKSPACE_DIRECTORY"
 {cmd} {args}

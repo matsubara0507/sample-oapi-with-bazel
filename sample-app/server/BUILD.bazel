@@ -15,7 +15,7 @@ oapi_codegen(
     ],
     package = "server",
     spec = "api.yaml",
-    visibility = ["//visibility:public"],
+    visibility = ["//sample-app:__pkg__"],
 )
 
 go_library(

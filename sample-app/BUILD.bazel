@@ -1,3 +1,13 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
 
 gazelle(name = "gazelle")
+
+load("@com_github_ash2k_bazel_tools//multirun:def.bzl", "multirun")
+
+multirun(
+    name = "api_gen",
+    commands = [
+        "//sample-app/client:api_gen",
+        "//sample-app/server:api_gen",
+    ],
+)

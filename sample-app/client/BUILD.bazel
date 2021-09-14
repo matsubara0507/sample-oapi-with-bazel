@@ -7,6 +7,7 @@ openapi_generate(
     out = "generated",
     generator = "elm",
     spec = "//sample-app/server:api.yaml",
+    visibility = ["//sample-app:__pkg__"],
 )
 
 elm_dependencies(

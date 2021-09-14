@@ -56,3 +56,12 @@ git_repository(
 load("@rules_openapi//openapi:toolchain.bzl", rules_openapi_toolchains = "toolchains")
 
 rules_openapi_toolchains(version = "5.2.1")
+
+git_repository(
+    name = "com_github_ash2k_bazel_tools",
+    commit = "1975881d802316fd94078b15a4f6ba96ac3650ae",
+    remote = "https://github.com/ash2k/bazel-tools.git",
+    shallow_since = "1624664250 +1000",
+)
+
+load("@com_github_ash2k_bazel_tools//multirun:deps.bzl", "multirun_dependencies")
