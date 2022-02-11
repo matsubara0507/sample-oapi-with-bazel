@@ -15,6 +15,7 @@ go_library(
         "external_docs.go",
         "header.go",
         "info.go",
+        "internalize_refs.go",
         "link.go",
         "loader.go",
         "media_type.go",
