@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "internal",
+    srcs = ["internal.go"],
+    importmap = "github.com/matsubara0507/sample-oapi-with-bazel/third_party/oapi-codegen/vendor/golang.org/x/xerrors/internal",
+    importpath = "golang.org/x/xerrors/internal",
+    visibility = ["//third_party/oapi-codegen/vendor/golang.org/x/xerrors:__subpackages__"],
+)

@@ -6,5 +6,8 @@ go_library(
     importmap = "github.com/matsubara0507/sample-oapi-with-bazel/third_party/oapi-codegen/vendor/golang.org/x/tools/imports",
     importpath = "golang.org/x/tools/imports",
     visibility = ["//visibility:public"],
-    deps = ["//third_party/oapi-codegen/vendor/golang.org/x/tools/internal/imports"],
+    deps = [
+        "//third_party/oapi-codegen/vendor/golang.org/x/tools/internal/gocommand",
+        "//third_party/oapi-codegen/vendor/golang.org/x/tools/internal/imports",
+    ],
 )

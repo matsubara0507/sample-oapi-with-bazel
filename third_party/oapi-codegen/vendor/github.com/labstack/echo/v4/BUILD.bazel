@@ -9,6 +9,7 @@ go_library(
         "echo.go",
         "group.go",
         "ip.go",
+        "json.go",
         "log.go",
         "response.go",
         "router.go",
